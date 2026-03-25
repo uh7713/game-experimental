@@ -24,10 +24,17 @@ public class MazeCell : MonoBehaviour
     public int GridZ;
     // =============================
 
+    // === 新增：將 GameObject 開放給 Generator 讀取，方便 Generator 去找 MovingWall 腳本 ===
+    public GameObject LeftWallObj => _leftWall;
+    public GameObject RightWallObj => _rightWall;
+    public GameObject FrontWallObj => _frontWall;
+    public GameObject BackWallObj => _backWall;
+    // ==============================================================================
+
     public void Visit()
     {
         IsVisited = true;
-        _unvisitedBlock.SetActive(false);
+        if (_unvisitedBlock != null) _unvisitedBlock.SetActive(false);
     }
 
     public void ClearLeftWall() => _leftWall.SetActive(false);
